@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationProducts.Domain.Models;
 using WebApplicationProducts.Domain.Services;
+using WebApplicationProducts.Extensions;
 using WebApplicationProducts.Resources;
 
 namespace WebApplicationProducts.Controllers
@@ -29,6 +30,15 @@ namespace WebApplicationProducts.Controllers
             var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
 
             return resources;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessage());
+
+            var category = _mapper.Map<SaveCategoryResource, Category>(resource);
         }
 
     }
