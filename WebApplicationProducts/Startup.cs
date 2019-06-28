@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +17,7 @@ using WebApplicationProducts.Domain.Services;
 using WebApplicationProducts.Presistance.Contexts;
 using WebApplicationProducts.Presistance.Repositories;
 using WebApplicationProducts.Services;
+
 
 namespace WebApplicationProducts
 {
@@ -40,6 +42,7 @@ namespace WebApplicationProducts
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
