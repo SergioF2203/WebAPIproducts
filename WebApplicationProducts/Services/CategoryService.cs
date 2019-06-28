@@ -14,7 +14,7 @@ namespace WebApplicationProducts.Services
 
         public CategoryService(ICategoryRepository categoryRepository)
         {
-            this._categoryRepository = categoryRepository
+            this._categoryRepository = categoryRepository;
         }
         public async Task<IEnumerable<Category>> ListAsync()
         {
