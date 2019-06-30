@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplicationProducts.Domain.Models
+namespace WebApplicationProducts.Resources
 {
-    public class Product
+    public class ProductResource
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
         public double Price { get; set; }
-
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public CategoryResource Category { get; set; }
     }
 }

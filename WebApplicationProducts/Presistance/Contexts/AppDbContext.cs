@@ -63,6 +63,24 @@ namespace WebApplicationProducts.Presistance.Contexts
             builder.Entity<Product>()
                 .Property(p => p.Price)
                 .IsRequired();
+
+            builder.Entity<Product>().HasData
+                (
+                    new Product
+                    {
+                        Id = 100,
+                        Name = "Sandora",
+                        Price = 28.10,
+                        CategoryId = 2000
+                    },
+                    new Product
+                    {
+                        Id = 200,
+                        Name = "Pepsi MAX",
+                        Price = 14.10,
+                        CategoryId = 1000
+                    }
+                );
         }
 
     }
