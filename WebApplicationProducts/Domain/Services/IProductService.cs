@@ -12,5 +12,6 @@ namespace WebApplicationProducts.Domain.Services
         Task<IEnumerable<Product>> ListAsync();
         Task<ProductResponse> GetProductAsync(int id);
         Task<ProductResponse> DeleteAsync(int id);
+        Task<ProductResponse> UpdateAsync(int id, Product product);
     }
 }

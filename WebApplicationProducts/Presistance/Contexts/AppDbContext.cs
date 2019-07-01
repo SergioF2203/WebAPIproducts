@@ -41,7 +41,8 @@ namespace WebApplicationProducts.Presistance.Contexts
             builder.Entity<Category>().HasData
                 (
                 new Category { Id = 1000, Name = "Beverages" },
-                new Category { Id = 2000, Name = "Juice and Hot Dairy" }
+                new Category { Id = 2000, Name = "Juice and Hot Dairy" },
+                new Category { Id = 10000, Name = "None"}
                 );
 
             builder.Entity<Product>()
@@ -71,6 +72,7 @@ namespace WebApplicationProducts.Presistance.Contexts
                         Id = 100,
                         Name = "Sandora",
                         Price = 28.10,
+                        IsActive = true,
                         CategoryId = 2000
                     },
                     new Product
@@ -78,6 +80,7 @@ namespace WebApplicationProducts.Presistance.Contexts
                         Id = 200,
                         Name = "Pepsi MAX",
                         Price = 14.10,
+                        IsActive = true,
                         CategoryId = 1000
                     }
                 );

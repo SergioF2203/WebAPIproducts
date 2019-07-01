@@ -11,6 +11,7 @@ namespace WebApplicationProducts.Domain.Repositories
         Task<IEnumerable<Product>> ListAsync();
         Task<Product> FindByIdAsync(int id);
         void Remove(Product product);
+        void Update(Product product);
 
     }
 }

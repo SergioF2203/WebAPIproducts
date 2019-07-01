@@ -26,9 +26,14 @@ namespace WebApplicationProducts.Presistance.Repositories
                 .FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public void Remove (Product product)
+        public void Remove(Product product)
         {
             _context.Products.Remove(product);
+        }
+
+        public void Update(Product product)
+        {
+            _context.Products.Update(product);
         }
     }
 }
