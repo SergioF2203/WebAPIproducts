@@ -12,10 +12,12 @@ namespace WebApplicationProducts.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Product>> ListAsync()
@@ -37,6 +39,26 @@ namespace WebApplicationProducts.Services
             catch (Exception ex)
             {
                 return new ProductResponse($"An error occured when saving the category: {ex.Message}");
+            }
+        }
+
+        public async Task<ProductResponse> DeleteAsync(int id)
+        {
+            var existingProduct = await _productRepository.FindByIdAsync(id);
+
+            if (existingProduct == null)
+                return new ProductResponse("Product not found");
+
+            try
+            {
+                _productRepository.Remove(existingProduct);
+                await _unitOfWork.CompleteAsync();
+
+                return new ProductResponse(existingProduct);
+            }
+            catch (Exception ex)
+            {
+                return new ProductResponse($"An error occured when deleting the category: {ex.Message}");
             }
         }
 

@@ -16,16 +16,19 @@ namespace WebApplicationProducts.Presistance.Repositories
 
         public async Task<IEnumerable<Product>> ListAsync()
         {
-            return await _context.Products.Include(p => p.Category).ToListAsync();
+            return await _context.Products.Include(p => p.Category)
+                .ToListAsync();
         }
 
         public async Task<Product> FindByIdAsync(int id)
         {
-            return await _context.Products.Include(p=>p.Category)
+            return await _context.Products.Include(p => p.Category)
                 .FirstOrDefaultAsync(i => i.Id == id);
         }
 
-
-
+        public void Remove (Product product)
+        {
+            _context.Products.Remove(product);
+        }
     }
 }
