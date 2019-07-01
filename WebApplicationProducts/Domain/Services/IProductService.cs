@@ -13,5 +13,6 @@ namespace WebApplicationProducts.Domain.Services
         Task<ProductResponse> GetProductAsync(int id);
         Task<ProductResponse> DeleteAsync(int id);
         Task<ProductResponse> UpdateAsync(int id, Product product);
+        Task<ProductResponse> SaveAsync(Product product);
     }
 }

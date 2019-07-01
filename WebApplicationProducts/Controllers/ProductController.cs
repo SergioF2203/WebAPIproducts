@@ -73,5 +73,21 @@ namespace WebApplicationProducts.Controllers
             var productResource = _mapper.Map<Product, ProductResource>(result.Product);
             return Ok(productResource);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveProductResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessage());
+
+            var product = _mapper.Map<SaveProductResource, Product>(resource);
+            var result = await _productService.SaveAsync(product);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var productResource = _mapper.Map<Product, ProductResource>(result.Product);
+            return Ok(productResource);
+        }
     }
 }

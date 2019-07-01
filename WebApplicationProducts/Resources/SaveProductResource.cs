@@ -15,8 +15,8 @@ namespace WebApplicationProducts.Resources
         [Required]
         public double Price { get; set; }
 
-        public int CategoryId { get; set; } = 10000;
-        public bool IsActive { get; set; } = false;
+        public int CategoryId { get; set;} 
+        public bool IsActive { get; set; }
 
     }
 }

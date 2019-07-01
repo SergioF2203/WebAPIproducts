@@ -65,6 +65,10 @@ namespace WebApplicationProducts.Presistance.Contexts
                 .Property(p => p.Price)
                 .IsRequired();
 
+            builder.Entity<Product>()
+                .Property(p => p.IsActive)
+                .IsRequired();
+
             builder.Entity<Product>().HasData
                 (
                     new Product

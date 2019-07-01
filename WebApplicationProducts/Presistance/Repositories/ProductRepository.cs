@@ -35,5 +35,10 @@ namespace WebApplicationProducts.Presistance.Repositories
         {
             _context.Products.Update(product);
         }
+
+        public async Task AddAsync(Product product)
+        {
+            await _context.Products.AddAsync(product);
+        }
     }
 }

@@ -89,5 +89,20 @@ namespace WebApplicationProducts.Services
             }
         }
 
+        public async Task<ProductResponse> SaveAsync(Product product)
+        {
+            try
+            {
+                await _productRepository.AddAsync(product);
+                await _unitOfWork.CompleteAsync();
+
+                return new ProductResponse(product);
+            }
+            catch (Exception ex)
+            {
+                return new ProductResponse($"An error occured when saving the category: {ex.Message}");
+            }
+        }
+
     }
 }

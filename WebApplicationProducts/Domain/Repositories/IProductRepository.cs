@@ -12,6 +12,7 @@ namespace WebApplicationProducts.Domain.Repositories
         Task<Product> FindByIdAsync(int id);
         void Remove(Product product);
         void Update(Product product);
+        Task AddAsync(Product product);
 
     }
 }
