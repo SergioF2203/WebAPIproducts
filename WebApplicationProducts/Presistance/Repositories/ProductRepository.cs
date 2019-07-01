@@ -13,9 +13,19 @@ namespace WebApplicationProducts.Presistance.Repositories
     {
         public ProductRepository(AppDbContext context) : base(context) { }
 
+
         public async Task<IEnumerable<Product>> ListAsync()
         {
             return await _context.Products.Include(p => p.Category).ToListAsync();
         }
+
+        public async Task<Product> FindByIdAsync(int id)
+        {
+            return await _context.Products.Include(p=>p.Category)
+                .FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+
+
     }
 }

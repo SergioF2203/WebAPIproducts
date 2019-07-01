@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using WebApplicationProducts.Domain.Models;
 using WebApplicationProducts.Domain.Repositories;
 using WebApplicationProducts.Domain.Services;
+using WebApplicationProducts.Domain.Services.Communication;
 
 namespace WebApplicationProducts.Services
 {
@@ -21,5 +22,23 @@ namespace WebApplicationProducts.Services
         {
             return await _productRepository.ListAsync();
         }
+
+        public async Task<ProductResponse> GetProductAsync(int id)
+        {
+            var existingProduct = await _productRepository.FindByIdAsync(id);
+
+            if (existingProduct == null)
+                return new ProductResponse("Product not found");
+
+            try
+            {
+                return new ProductResponse(existingProduct);
+            }
+            catch (Exception ex)
+            {
+                return new ProductResponse($"An error occured when saving the category: {ex.Message}");
+            }
+        }
+
     }
 }

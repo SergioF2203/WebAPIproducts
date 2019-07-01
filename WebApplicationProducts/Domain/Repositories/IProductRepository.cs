@@ -9,5 +9,6 @@ namespace WebApplicationProducts.Domain.Repositories
     public interface IProductRepository
     {
         Task<IEnumerable<Product>> ListAsync();
+        Task<Product> FindByIdAsync(int id);
     }
 }
